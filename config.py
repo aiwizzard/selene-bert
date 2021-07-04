@@ -15,7 +15,7 @@ ff_dim = 2048
 head = 8
 n_layers = 6
 dropout_rate = 0.1
-n_epochs = 3
+n_epochs = 5
 
 seed = 116
 

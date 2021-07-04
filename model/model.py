@@ -33,7 +33,7 @@ class ChatModel(nn.Module):
 
     def forward(self, source, source_mask, target, target_mask):
         x = self.encode(source, source_mask)
-        x = self.decode(x, source_mask, target, target_mask)  # x is the memory
+        x = self.decode(target, x, source_mask, target_mask)  # x is the memory
         x = self.generate(x)
         return x
 
@@ -52,7 +52,7 @@ class ChatModel(nn.Module):
     def encode(self, source, attention_mask):
         return self.encoder(source, attention_mask=attention_mask)
 
-    def decode(self, memory, source_mask, target, target_mask):
+    def decode(self, target, memory, source_mask, target_mask):
         return self.decoder(target, memory, source_mask, target_mask)
 
     def generate(self, x):

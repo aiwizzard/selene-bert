@@ -3,6 +3,7 @@ import numpy as np
 import pickle
 from tqdm import tqdm
 import config as config
+from model.model import ChatModel
 
 def create_train_data(tokenizer, use_pickle=False) -> list:
     data = []
@@ -47,3 +48,8 @@ def seed_everything(seed):
     torch.random.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     torch.backends.cudnn.benchmark = True
+
+def build_model(config):
+    model = ChatModel(config)
+    model.freeze_encoder()
+    return model

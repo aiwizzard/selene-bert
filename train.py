@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch.nn.utils import clip_grad_norm_
 from tqdm import tqdm
 from transformers.models.bert.tokenization_bert import BertTokenizer
-from train_util import create_masks, create_train_data, seed_everything
+from train_util import create_masks, create_train_data, seed_everything, build_model
 from model.dataset import ChatDataSet, SampledDataLoader
 from torch.optim import AdamW
 from model.model import ChatModel
@@ -70,7 +70,7 @@ def main(config):
         dataset, batch_size=config.batch_size, padding=toker.pad_token_id
     )
 
-    model = ChatModel(config)
+    model = build_model(config)
     model = model.to(config.device)
 
     adam_opim = AdamW(

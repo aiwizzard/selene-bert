@@ -70,8 +70,8 @@ def main(config):
         dataset, batch_size=config.batch_size, padding=toker.pad_token_id
     )
 
-    model = build_model(config)
-    model = model.to(config.device)
+    model = build_model(config).to(config.device)
+    model.unfreeze()
 
     adam_opim = AdamW(
         model.parameters(), lr=config.learning_rate, betas=config.betas, eps=1e-9

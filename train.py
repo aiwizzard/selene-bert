@@ -46,15 +46,15 @@ def train(epoch, config, data_loader, toker, model, optimizer, criterion):
         },
         f"{config.data_dir}/{config.fn}.pth",
     )
-    if epoch % 3 == 0:
-        torch.save(
-            {
-                "epoch": epoch,
-                "model": model.state_dict(),
-                "optimizer": optimizer.state_dict(),
-            },
-            f"{config.data_dir}/{config.fn}_{epoch}.pth",
-        )
+    # if epoch % 3 == 0:
+    #     torch.save(
+    #         {
+    #             "epoch": epoch,
+    #             "model": model.state_dict(),
+    #             "optimizer": optimizer.state_dict(),
+    #         },
+    #         f"{config.data_dir}/{config.fn}_{epoch}.pth",
+    #     )
     print("--------------------------------")
     print("Model Saved")
     print("--------------------------------")
@@ -81,7 +81,7 @@ def main(config):
     start_epoch = 0
 
     if config.load:
-        start_epoch = 10
+        start_epoch = 4
         state_dict = torch.load(
             "../../input/trained-model/trained_model.pth", map_location=config.device
         )

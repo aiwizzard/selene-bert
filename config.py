@@ -4,7 +4,7 @@ import torch
 #     word_map = json.load(j)
 # vocab_size = len(word_map)
 
-load = False
+load = True
 
 vocab_size = 32000
 max_len = 512

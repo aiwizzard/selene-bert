@@ -71,7 +71,7 @@ def main(config):
     )
 
     model = build_model(config).to(config.device)
-    model.unfreeze()
+    # model.unfreeze()
 
     adam_opim = AdamW(
         model.parameters(), lr=config.learning_rate, betas=config.betas, eps=1e-9
